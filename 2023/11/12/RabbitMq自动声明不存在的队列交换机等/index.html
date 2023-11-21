@@ -19,13 +19,15 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta property="og:type" content="article">
+    <meta name="description" content="如果交换机或这是队列存在的话就不会自动地创建了,如果没有存在的话才会创建 123456789101112131415161718@Servicepublic class QueueService &amp;#123;    @Autowired    private AmqpAdmin amqpAdmin;    public void ensureQueueExists(String queueName">
+<meta property="og:type" content="article">
 <meta property="og:title" content="RabbitMq自动声明不存在的队列交换机等">
 <meta property="og:url" content="https://yiju-peng.github.io/2023/11/12/RabbitMq%E8%87%AA%E5%8A%A8%E5%A3%B0%E6%98%8E%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E9%98%9F%E5%88%97%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AD%89/index.html">
 <meta property="og:site_name" content="myblogs">
+<meta property="og:description" content="如果交换机或这是队列存在的话就不会自动地创建了,如果没有存在的话才会创建 123456789101112131415161718@Servicepublic class QueueService &amp;#123;    @Autowired    private AmqpAdmin amqpAdmin;    public void ensureQueueExists(String queueName">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-12T06:09:11.000Z">
-<meta property="article:modified_time" content="2023-11-12T06:09:11.492Z">
+<meta property="article:modified_time" content="2023-11-12T06:16:01.189Z">
 <meta property="article:author" content="YiJu-Peng">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
@@ -487,21 +489,45 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        
+        <p>如果交换机或这是队列存在的话就不会自动地创建了,如果没有存在的话才会创建</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">QueueService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AmqpAdmin amqpAdmin;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">ensureQueueExists</span><span class="params">(String queueName, <span class="type">boolean</span> durable, <span class="type">boolean</span> exclusive, <span class="type">boolean</span> autoDelete)</span> &#123;</span><br><span class="line">        <span class="type">Queue</span> <span class="variable">queue</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Queue</span>(queueName, durable, exclusive, autoDelete);</span><br><span class="line">        amqpAdmin.declareQueue(queue);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">ensureExchangeExists</span><span class="params">(String exchangeName, <span class="type">boolean</span> durable, <span class="type">boolean</span> autoDelete)</span> &#123;</span><br><span class="line">        <span class="type">DirectExchange</span> <span class="variable">exchange</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DirectExchange</span>(exchangeName, durable, autoDelete);</span><br><span class="line">        amqpAdmin.declareExchange(exchange);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加其他的方法...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，<code>ensureQueueExists</code>方法接收四个参数：</p>
+<ul>
+<li><code>queueName</code>：队列名称。</li>
+<li><code>durable</code>：如果设置为<code>true</code>，队列将在服务器重启后仍然存在。</li>
+<li><code>exclusive</code>：如果设置为<code>true</code>，队列只能被声明它的连接（Connection）使用，并且在该连接关闭时自动删除。</li>
+<li><code>autoDelete</code>：如果设置为<code>true</code>，队列将在最后一个消费者断开后自动删除。</li>
+</ul>
+<ol>
+<li><code>exchangeName</code>：交换机的名称，这是一个字符串，用于唯一标识交换机。</li>
+<li><code>durable</code>：是否持久化。如果设置为<code>true</code>，则表示交换机会在RabbitMQ服务器重启后仍然存在。如果设置为<code>false</code>，则表示交换机在服务器重启后会被删除。</li>
+<li><code>autoDelete</code>：是否自动删除。如果设置为<code>true</code>，则表示当所有绑定到该交换机的队列都不再使用时，交换机会被自动删除。如果设置为<code>false</code>，则表示即使所有绑定到该交换机的队列都不再使用，交换机也不会被删除。</li>
+</ol>
+<p>这些参数可以让你更灵活地控制交换机的行为。例如，你可以创建一个临时的、</p>
+<p>然后，在需要使用这些方法的地方，你可以注入<code>QueueService</code>，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> QueueService queueService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">someMethod</span><span class="params">()</span> &#123;</span><br><span class="line">    queueService.ensureQueueExists(<span class="string">&quot;MyQueue&quot;</span>, <span class="literal">true</span>, <span class="literal">false</span>, <span class="literal">false</span>);</span><br><span class="line">    queueService.ensureExchangeExists(<span class="string">&quot;MyExchange&quot;</span>, <span class="literal">true</span>, <span class="literal">false</span>);</span><br><span class="line">    <span class="comment">// 调用其他的方法...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
     </article>
     <!-- license -->
     
         <div class="license-wrapper">
             <p>原文作者：<a href="https://yiju-peng.github.io">YiJu-Peng</a>
             <p>原文链接：<a href="https://yiju-peng.github.io/2023/11/12/RabbitMq%E8%87%AA%E5%8A%A8%E5%A3%B0%E6%98%8E%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E9%98%9F%E5%88%97%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AD%89/">https://yiju-peng.github.io/2023/11/12/RabbitMq%E8%87%AA%E5%8A%A8%E5%A3%B0%E6%98%8E%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E9%98%9F%E5%88%97%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AD%89/</a>
-            <p>发表日期：<a href="https://yiju-peng.github.io/2023/11/12/RabbitMq%E8%87%AA%E5%8A%A8%E5%A3%B0%E6%98%8E%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E9%98%9F%E5%88%97%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AD%89/">November 12th 2023, 2:09:11 pm</a>
-            <p>更新日期：<a href="https://yiju-peng.github.io/2023/11/12/RabbitMq%E8%87%AA%E5%8A%A8%E5%A3%B0%E6%98%8E%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E9%98%9F%E5%88%97%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AD%89/">November 12th 2023, 2:09:11 pm</a>
+            <p>发表日期：<a href="https://yiju-peng.github.io/2023/11/12/RabbitMq%E8%87%AA%E5%8A%A8%E5%A3%B0%E6%98%8E%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E9%98%9F%E5%88%97%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AD%89/">十一月 12日 2023, 2:09:11 下午</a>
+            <p>更新日期：<a href="https://yiju-peng.github.io/2023/11/12/RabbitMq%E8%87%AA%E5%8A%A8%E5%A3%B0%E6%98%8E%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E9%98%9F%E5%88%97%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AD%89/">November 12th 2023, 2:16:01 pm</a>
             <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
     <!-- paginator -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2023/11/14/JAVA%E8%B0%83%E7%94%A8%E6%A2%A6%E7%BD%91%E4%BA%91%E9%80%9A%E8%AE%AF%E5%B9%B3%E5%8F%B0API%E5%AE%9E%E7%8E%B0%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81/" title="JAVA调用梦网云通讯平台API实现短信发送">
+                    <div class="nextTitle">JAVA调用梦网云通讯平台API实现短信发送</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -724,7 +750,52 @@
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -777,7 +848,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 11
+        Total : 14
         </div>
         <!-- search  -->
         
@@ -808,34 +879,34 @@
             
         
         <li class="archive-post-item">
+            <span class="archive-post-date">11/21</span>
+            <a class="archive-post-title" href="/2023/11/21/spring-init%E6%A8%A1%E6%9D%BF/">spring init模板</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/17</span>
+            <a class="archive-post-title" href="/2023/11/17/es%E7%BA%A2%E8%89%B2%E5%88%86%E7%89%87%E5%AF%BC%E8%87%B4kibana%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">es红色分片导致kibana无法启动解决方法</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/16</span>
+            <a class="archive-post-title" href="/2023/11/16/boot%E6%95%B4%E5%90%88%E9%82%AE%E4%BB%B6/">boot整合邮件</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/14</span>
+            <a class="archive-post-title" href="/2023/11/14/JAVA%E8%B0%83%E7%94%A8%E6%A2%A6%E7%BD%91%E4%BA%91%E9%80%9A%E8%AE%AF%E5%B9%B3%E5%8F%B0API%E5%AE%9E%E7%8E%B0%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81/">JAVA调用梦网云通讯平台API实现短信发送</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">11/12</span>
             <a class="archive-post-title" href="/2023/11/12/RabbitMq%E8%87%AA%E5%8A%A8%E5%A3%B0%E6%98%8E%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E9%98%9F%E5%88%97%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AD%89/">RabbitMq自动声明不存在的队列交换机等</a>
         </li>
     
-        
-            
-            
-                
-                </ul>
-            
-            <div class="archive-year"> Invalid date </div>
-            <ul class="year-list">
-            
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span>
-            <a class="archive-post-title" href="/2023/10/25/hello-world/">Hello World</a>
-        </li>
-    
-        
-            
-            
-                
-                </ul>
-            
-            <div class="archive-year"> 2023 </div>
-            <ul class="year-list">
-            
         
         <li class="archive-post-item">
             <span class="archive-post-date">11/08</span>
@@ -856,8 +927,20 @@
     
         
         <li class="archive-post-item">
+            <span class="archive-post-date">10/31</span>
+            <a class="archive-post-title" href="/2023/10/31/%E4%BD%BF%E7%94%A8es%E5%92%8Cjava%E7%9A%84%E9%83%A8%E5%88%86%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">使用es和java的部分注意事项</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">10/30</span>
             <a class="archive-post-title" href="/2023/10/30/git%E9%83%A8%E5%88%86%E6%93%8D%E4%BD%9C/">git部分操作</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/27</span>
+            <a class="archive-post-title" href="/2023/10/27/Netty%E5%AD%A6%E4%B9%A0%E4%B9%8BNIO%E5%9F%BA%E7%A1%80/">Netty学习之NIO基础</a>
         </li>
     
         
@@ -884,18 +967,6 @@
             <div class="archive-year"> 2023 </div>
             <ul class="year-list">
             
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/31</span>
-            <a class="archive-post-title" href="/2023/10/31/%E4%BD%BF%E7%94%A8es%E5%92%8Cjava%E7%9A%84%E9%83%A8%E5%88%86%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">使用es和java的部分注意事项</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/27</span>
-            <a class="archive-post-title" href="/2023/10/27/Netty%E5%AD%A6%E4%B9%A0%E4%B9%8BNIO%E5%9F%BA%E7%A1%80/">Netty学习之NIO基础</a>
-        </li>
-    
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/27</span>
