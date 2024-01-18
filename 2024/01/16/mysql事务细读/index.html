@@ -19,18 +19,27 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta property="og:type" content="website">
-<meta property="og:title" content="myblogs">
-<meta property="og:url" content="https://yiju-peng.github.io/archives/2023/12/index.html">
+    <meta name="description" content="MySQL事务隔离级别和实现原理（看这一篇文章就够了！） - 知乎 (zhihu.com) 总结部分 以下几个概念是事务隔离级别要实际解决的问题，所以需要搞清楚都是什么意思。 脏读 脏读指的是读到了其他事务未提交的数据，未提交意味着这些数据可能会回滚，也就是可能最终不会存到数据库中，也就是不存在的数据。读到了并一定最终存在的数据，这就是脏读。 可重复读 可重复读指的是在一个事务内，最开始读到的数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql事务细读">
+<meta property="og:url" content="https://yiju-peng.github.io/2024/01/16/mysql%E4%BA%8B%E5%8A%A1%E7%BB%86%E8%AF%BB/index.html">
 <meta property="og:site_name" content="myblogs">
+<meta property="og:description" content="MySQL事务隔离级别和实现原理（看这一篇文章就够了！） - 知乎 (zhihu.com) 总结部分 以下几个概念是事务隔离级别要实际解决的问题，所以需要搞清楚都是什么意思。 脏读 脏读指的是读到了其他事务未提交的数据，未提交意味着这些数据可能会回滚，也就是可能最终不会存到数据库中，也就是不存在的数据。读到了并一定最终存在的数据，这就是脏读。 可重复读 可重复读指的是在一个事务内，最开始读到的数据">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-2e1a7203478165890e2d09f36cb39857_1440w.webp">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-6c8554423406f0e4481b9b8b0b800863_1440w.webp">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-dbf9e8c10cffbba915de717847512f4f_1440w.webp">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-c22fd92467b2c69f626634e9a5dd0d8e_1440w.webp">
+<meta property="article:published_time" content="2024-01-16T13:15:09.000Z">
+<meta property="article:modified_time" content="2024-01-18T08:52:06.058Z">
 <meta property="article:author" content="YiJu-Peng">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic4.zhimg.com/80/v2-2e1a7203478165890e2d09f36cb39857_1440w.webp">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon.ico">
     
-    <title>mylogs</title>
+    <title>mysql事务细读 · mylogs</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -218,6 +227,8 @@
         }
     </script>
     
+        <body class="post-body">
+    
         <!-- header -->
         <header class="header header-mobile">
     <!-- top read progress line -->
@@ -247,6 +258,17 @@
     </div>
     <!-- toggle banner for post layout -->
     
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">mylogs</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">mysql事务细读</a>
+            </div>
+        </div>
+    
 </header>
 
         <!-- fixed footer -->
@@ -273,24 +295,74 @@
 
 
 
+    height:50vh;
+
 ">
     
     <!-- 主页  -->
     
+        
+    <!-- 404页  -->
+    
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+                mysql事务细读
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+                
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+</div>
+
+                
+                <!-- 文章字数统计 -->
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2024/01/16</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -420,42 +492,150 @@
 
             <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
             <div class="container container-unloaded">
-                <main class="main index-page">
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/12/24/generator%E4%BD%BF%E7%94%A8/">
-                
-                <span class="abstract-title-text">generator使用</span>
-            </a>
-            <div class="abstract-content">
-                strategyConfig你把这个所有的方法作用都将一遍
-2023&#x2F;12&#x2F;24 15:19:49
-好的，下面我将对 StrategyConfig 中常用的几个方法进行解释：
+                <main class="main post-page">
+    <article class="article-entry">
+        <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/117476959">MySQL事务隔离级别和实现原理（看这一篇文章就够了！） - 知乎 (zhihu.com)</a></p>
+<p>总结部分</p>
+<p>以下几个概念是事务隔离级别要实际解决的问题，所以需要搞清楚都是什么意思。</p>
+<p><strong>脏读</strong></p>
+<p>脏读指的是读到了其他事务未提交的数据，未提交意味着这些数据可能会回滚，也就是可能最终不会存到数据库中，也就是不存在的数据。读到了并一定最终存在的数据，这就是脏读。</p>
+<p><strong>可重复读</strong></p>
+<p>可重复读指的是在一个事务内，最开始读到的数据和事务结束前的任意时刻读到的同一批数据都是一致的。通常针对数据<strong>更新（UPDATE）</strong>操作。</p>
+<p><strong>不可重复读</strong></p>
+<p>对比可重复读，不可重复读指的是在同一事务内，不同的时刻读到的同一批数据可能是不一样的，可能会受到其他事务的影响，比如其他事务改了这批数据并提交了。通常针对数据<strong>更新（UPDATE）</strong>操作。</p>
+<p><strong>幻读</strong></p>
+<p>幻读是针对数据<strong>插入（INSERT）</strong>操作来说的。假设事务A对某些行的内容作了更改，但是还未提交，此时事务B插入了与事务A更改前的记录相同的记录行，并且在事务A提交之前先提交了，而这时，在事务A中查询，会发现好像刚刚的更改对于某些数据未起作用，但其实是事务B刚插入进来的，让用户感觉很魔幻，感觉出现了幻觉，这就叫幻读。</p>
+<h2 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a><strong>事务隔离级别</strong></h2><p>SQL 标准定义了四种隔离级别，MySQL 全都支持。这四种隔离级别分别是：</p>
+<ol>
+<li>读未提交（READ UNCOMMITTED）</li>
+<li>读提交 （READ COMMITTED）</li>
+<li>可重复读 （REPEATABLE READ）</li>
+<li>串行化 （SERIALIZABLE）</li>
+</ol>
+<p>从上往下，隔离强度逐渐增强，性能逐渐变差。采用哪种隔离级别要根据系统需求权衡决定，其中，<strong>可重复读</strong>是 MySQL 的默认级别。</p>
+<p>事务隔离其实就是为了解决上面提到的脏读、不可重复读、幻读这几个问题，下面展示了 4 种隔离级别对这三个问题的解决程度。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-2e1a7203478165890e2d09f36cb39857_1440w.webp" alt="img"></p>
+<p>事务执行的范围是有两种的,一种的是全局执行,一种是session</p>
+<p>很好理解,一种启动了之后只有对本次启动的session才有用,一种是全局的session都可以适用,但是之前启动的session没有作用,使用完之后连接的session才有作用</p>
+<p>如果用 shell 客户端那就要重新连接 MySQL，如果用 Navicat 那就要创建新的查询窗口。</p>
+<h2 id="MVVC-多版本并发控制"><a href="#MVVC-多版本并发控制" class="headerlink" title="MVVC (多版本并发控制)"></a>MVVC (多版本并发控制)</h2><p>这个其实就是为了解决不可重复读和幻读所做的操作</p>
+<h3 id="可以解决什么问题？"><a href="#可以解决什么问题？" class="headerlink" title="可以解决什么问题？"></a><strong>可以解决什么问题？</strong></h3><ul>
+<li>读写之间阻塞的问题，通过 MVCC 可以让读写互相不阻塞，读不相互阻塞，写不阻塞读，这样可以提升数据并发处理能力。</li>
+<li>降低了死锁的概率，这个是因为 MVCC 采用了乐观锁的方式，读取数据时，不需要加锁，写操作，只需要锁定必要的行。</li>
+<li>解决了一致性读的问题，当我们朝向某个数据库在时间点的快照是，只能看到这个时间点之前事务提交更新的结果，不能看到时间点之后事务提交的更新结果。</li>
+</ul>
+<h3 id="什么是快照读？"><a href="#什么是快照读？" class="headerlink" title="什么是快照读？"></a><strong>什么是快照读？</strong></h3><p>快照读，读取的是<strong>快照数据</strong>，不加锁的简单 Select 都属于快照读.</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM player WHERE ...</span><br></pre></td></tr></table></figure>
 
-setNaming(NamingStrategy naming): 设置表名到实体类名的转换策略，参数 naming 为 NamingStrategy 枚举类型，表示要使用的命名策略。
-setTablePrefix(String... tablePrefix)：设置要移除的表前缀，可传入多个表前缀。
-setEntityLombokModel(boolean entityLombokModel)...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/12/24">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/12/24</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
+<h2 id="什么是当前读？"><a href="#什么是当前读？" class="headerlink" title="什么是当前读？"></a><strong>什么是当前读？</strong></h2><p>当前读就是读的是<strong>最新数据</strong>,而不是历史的数据，加锁的 SELECT，或者对数据进行增删改都会进行当前读。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> player LOCK <span class="keyword">IN</span> SHARE MODE;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">FROM</span> player <span class="keyword">FOR</span> <span class="keyword">UPDATE</span>;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> player <span class="keyword">values</span> ...</span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> player <span class="keyword">WHERE</span> ...</span><br><span class="line"><span class="keyword">UPDATE</span> player <span class="keyword">SET</span> ...</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>当前读（Read Committed）：当前读是指事务读取数据时，会读取最新的数据版本。如果其他事务正在修改该数据，并且修改已经提交，则当前读会读取到已提交的最新版本。当前读可以保证读取到最新的数据状态，但可能会受到其他事务的修改影响，导致读取到不一致的数据。</li>
+<li>快照读（Snapshot Read）：快照读是指事务读取数据时，会读取事务开始时的数据版本，而不会读取其他事务提交之后的修改。快照读可以提供较好的隔离性，避免了幻读等问题。快照读常用于数据库的默认隔离级别，如可重复读。</li>
+</ol>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>在MVCC中，具体使用当前读还是快照读取决定于数据库系统的默认行为以及事务隔离级别的设置。</p>
+<p>一般情况下，数据库系统会有一个默认的隔离级别，例如可重复读。这意味着事务在执行查询操作时，默认会使用快照读，即读取事务开始时的数据版本，而不会读取其他事务提交之后的修改。</p>
+<p>然而，很多数据库系统也提供了灵活的隔离级别设置，允许开发人员根据具体需求来指定读取方式。例如，可以显式地将隔离级别设置为读已提交，这样事务在执行查询操作时会使用当前读，读取最新的数据版本。</p>
+<p>因此，具体要使用哪种读取方式，是需要根据应用场景和需求来决定的。开发人员可以根据实际情况选择默认的隔离级别，或者显式地指定使用当前读或快照读。</p>
+<h2 id="InnoDB-的-MVCC-是如何实现的？"><a href="#InnoDB-的-MVCC-是如何实现的？" class="headerlink" title="InnoDB 的 MVCC 是如何实现的？"></a><strong>InnoDB 的 MVCC 是如何实现的？</strong></h2><p>InnoDB 是如何存储记录多个版本的？这些数据是 事务版本号，行记录中的隐藏列和Undo Log。</p>
+<h3 id="事务版本号"><a href="#事务版本号" class="headerlink" title="事务版本号"></a><strong>事务版本号</strong></h3><p>每开启一个日志，都会从数据库中获得一个事务ID（也称为事务版本号），这个事务 ID 是自增的，通过 ID 大小，可以判断事务的时间顺序。</p>
+<h3 id="行记录的隐藏列"><a href="#行记录的隐藏列" class="headerlink" title="行记录的隐藏列"></a><strong>行记录的隐藏列</strong></h3><ol>
+<li>row_id :隐藏的行 ID ,用来生成默认的聚集索引。如果创建数据表时没指定聚集索引，这时 InnoDB 就会用这个隐藏 ID 来创建聚集索引。采用聚集索引的方式可以提升数据的查找效率。</li>
+<li>trx_id: 操作这个数据事务 ID ，也就是最后一个对数据插入或者更新的事务 ID 。</li>
+<li>roll_ptr:回滚指针，指向这个记录的 Undo Log 信息。</li>
+</ol>
+<p><img src="https://pic4.zhimg.com/80/v2-6c8554423406f0e4481b9b8b0b800863_1440w.webp" alt="img"></p>
+<h3 id="Undo-Log"><a href="#Undo-Log" class="headerlink" title="Undo Log"></a><strong>Undo Log</strong></h3><p>InnoDB 将行记录快照保存在 Undo Log 里。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-dbf9e8c10cffbba915de717847512f4f_1440w.webp" alt="img"></p>
+<p>数据行通过快照记录都通过链表的结构的串联了起来，每个快照都保存了 trx_id 事务ID，如果要找到历史快照，就可以通过遍历回滚指针的方式进行查找。</p>
+<h2 id="Read-View-是啥？"><a href="#Read-View-是啥？" class="headerlink" title="Read View 是啥？"></a><strong>Read View 是啥？</strong></h2><p>如果一个事务要查询行记录，需要读取哪个版本的行记录呢？ Read View 就是来解决这个问题的。Read View 可以帮助我们解决可见性问题。 Read View 保存了<strong>当前事务开启时所有活跃的事务列表</strong>。换个角度，可以理解为: <strong>Read View 保存了不应该让这个事务看到的其他事务 ID 列表。</strong></p>
+<ol>
+<li>trx_ids 系统当前正在活跃的事务ID集合。</li>
+<li>low_limit_id ,活跃事务的最大的事务 ID。</li>
+<li>up_limit_id 活跃的事务中最小的事务 ID。</li>
+<li>creator_trx_id，创建这个 ReadView 的事务ID。</li>
+</ol>
+<h3 id="ReadView"><a href="#ReadView" class="headerlink" title="ReadView"></a><strong>ReadView</strong></h3><p><img src="https://pic3.zhimg.com/80/v2-c22fd92467b2c69f626634e9a5dd0d8e_1440w.webp" alt="img"></p>
+<p>如果当前事务的 creator_trx_id 想要读取某个行记录，这个行记录ID 的trx_id ，这样会有以下的情况：</p>
+<ul>
+<li>如果 trx_id &lt; 活跃的最小事务ID（up_limit_id）,也就是说这个行记录在<strong>这些活跃的事务创建前就已经提交了，那么这个行记录对当前事务是可见的。</strong></li>
+<li>如果trx_id &gt; 活跃的最大事务ID（low_limit_id），这个说明行记录在这些活跃的事务之后才创建，说明<strong>这个行记录对当前事务是不可见的。</strong></li>
+<li>如果 up_limit_id &lt; trx_id &lt;low_limit_id,说明该记录需要在 trx_ids 集合中，可能还处于活跃状态，因此我们需要在 trx_ids 集合中遍历 ，如果trx_id 存在于 trx_ids 集合中，证明这个事务 trx_id 还处于活跃状态，不可见，否则 ，trx_id 不存在于 trx_ids 集合中，说明事务trx_id 已经提交了，这行记录是可见的。</li>
+</ul>
+<h2 id="如何查询一条记录"><a href="#如何查询一条记录" class="headerlink" title="如何查询一条记录"></a><strong>如何查询一条记录</strong></h2><ol>
+<li>获取事务自己的版本号，即 事务ID</li>
+<li>获取 Read View</li>
+<li>查询得到的数据，然后 Read View 中的事务版本号进行比较。</li>
+<li>如果不符合 ReadView 规则， 那么就需要 UndoLog 中历史快照；</li>
+<li>最后返回符合规则的数据</li>
+</ol>
+<p>InnoDB 实现多版本控制 （MVCC）是通过 ReadView+ UndoLog 实现的，UndoLog 保存了历史快照，ReadView 规则帮助判断当前版本的数据是否可见。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><ul>
+<li>如果事务隔离级别是 ReadCommit ，一个事务的每一次 Select 都会去查一次ReadView ，每次查询的Read View 不同，就可能会造成不可重复读或者幻读的情况。</li>
+<li>如果事务的隔离级别是可重读，为了避免不可重读读，一个事务只在第一次 Select 的时候会获取一次Read View ，然后后面索引的Select 会复用这个 ReadView.</li>
+</ul>
+
+    </article>
+    <!-- license -->
     
-    <!-- paginator  -->
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://yiju-peng.github.io">YiJu-Peng</a>
+            <p>原文链接：<a href="https://yiju-peng.github.io/2024/01/16/mysql%E4%BA%8B%E5%8A%A1%E7%BB%86%E8%AF%BB/">https://yiju-peng.github.io/2024/01/16/mysql%E4%BA%8B%E5%8A%A1%E7%BB%86%E8%AF%BB/</a>
+            <p>发表日期：<a href="https://yiju-peng.github.io/2024/01/16/mysql%E4%BA%8B%E5%8A%A1%E7%BB%86%E8%AF%BB/">January 16th 2024, 9:15:09 pm</a>
+            <p>更新日期：<a href="https://yiju-peng.github.io/2024/01/16/mysql%E4%BA%8B%E5%8A%A1%E7%BB%86%E8%AF%BB/">January 18th 2024, 4:52:06 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2024/01/18/%E7%BD%91%E7%AB%99%E6%94%B6%E5%BD%95/" title="网站收录">
+                    <div class="nextTitle">网站收录</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2024/01/14/SpringSecurity/" title="SpringSecurity">
+                    <div class="prevTitle">SpringSecurity</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
     
 </main>
 
@@ -553,6 +733,23 @@ setEntityLombokModel(boolean entityLombokModel)...
 
         </div>
         <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-number">1.</span> <span class="toc-text">事务隔离级别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MVVC-%E5%A4%9A%E7%89%88%E6%9C%AC%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text">MVVC (多版本并发控制)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">可以解决什么问题？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BF%AB%E7%85%A7%E8%AF%BB%EF%BC%9F"><span class="toc-number">2.2.</span> <span class="toc-text">什么是快照读？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BD%93%E5%89%8D%E8%AF%BB%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">什么是当前读？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">4.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InnoDB-%E7%9A%84-MVCC-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="toc-number">5.</span> <span class="toc-text">InnoDB 的 MVCC 是如何实现的？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">5.1.</span> <span class="toc-text">事务版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E8%AE%B0%E5%BD%95%E7%9A%84%E9%9A%90%E8%97%8F%E5%88%97"><span class="toc-number">5.2.</span> <span class="toc-text">行记录的隐藏列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Undo-Log"><span class="toc-number">5.3.</span> <span class="toc-text">Undo Log</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Read-View-%E6%98%AF%E5%95%A5%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">Read View 是啥？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ReadView"><span class="toc-number">6.1.</span> <span class="toc-text">ReadView</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%9F%A5%E8%AF%A2%E4%B8%80%E6%9D%A1%E8%AE%B0%E5%BD%95"><span class="toc-number">7.</span> <span class="toc-text">如何查询一条记录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol>
+            </div>
         
         <!-- sidebar -->
         <div class="sidebar sidebar-hide">
@@ -1021,6 +1218,8 @@ setEntityLombokModel(boolean entityLombokModel)...
         <!-- CNZZ -->
         
         <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
         
         <!-- mermaid -->
         
