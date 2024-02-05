@@ -19,18 +19,25 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta property="og:type" content="website">
-<meta property="og:title" content="myblogs">
-<meta property="og:url" content="https://yiju-peng.github.io/archives/2023/page/2/index.html">
+    <meta name="description" content="部分来自springboot实现热部署_springboot热部署-CSDN博客 在传统的Java应用部署中，如果你更改了项目中的一个类，通常需要重新编译整个项目并重启应用才能使更改生效。这是因为大多数Java应用运行在一个Java虚拟机（JVM）实例中，而JVM在运行时不支持动态地替换或更新类定义。因此，为了让修改生效，需要停止应用，替换更改后的类或jar文件，然后重新启动应用。 然而，有一些技">
+<meta property="og:type" content="article">
+<meta property="og:title" content="热部署">
+<meta property="og:url" content="https://yiju-peng.github.io/2024/02/05/%E7%83%AD%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="myblogs">
+<meta property="og:description" content="部分来自springboot实现热部署_springboot热部署-CSDN博客 在传统的Java应用部署中，如果你更改了项目中的一个类，通常需要重新编译整个项目并重启应用才能使更改生效。这是因为大多数Java应用运行在一个Java虚拟机（JVM）实例中，而JVM在运行时不支持动态地替换或更新类定义。因此，为了让修改生效，需要停止应用，替换更改后的类或jar文件，然后重新启动应用。 然而，有一些技">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cDovL3d4NC5zaW5haW1nLmNuL2xhcmdlLzAwNmVPcVY5bHkxZzE5aDc1OHl1NWozMWhjMHNxd2k1LmpwZw">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cDovL3d4Mi5zaW5haW1nLmNuL2xhcmdlLzAwNmVPcVY5bHkxZzE5aDc3djkxdmozMG1sMGlwM3pwLmpwZw">
+<meta property="article:published_time" content="2024-02-05T13:02:08.000Z">
+<meta property="article:modified_time" content="2024-02-05T13:10:46.375Z">
 <meta property="article:author" content="YiJu-Peng">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgconvert.csdnimg.cn/aHR0cDovL3d4NC5zaW5haW1nLmNuL2xhcmdlLzAwNmVPcVY5bHkxZzE5aDc1OHl1NWozMWhjMHNxd2k1LmpwZw">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon.ico">
     
-    <title>mylogs</title>
+    <title>热部署 · mylogs</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -218,6 +225,8 @@
         }
     </script>
     
+        <body class="post-body">
+    
         <!-- header -->
         <header class="header header-mobile">
     <!-- top read progress line -->
@@ -247,6 +256,17 @@
     </div>
     <!-- toggle banner for post layout -->
     
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">mylogs</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">热部署</a>
+            </div>
+        </div>
+    
 </header>
 
         <!-- fixed footer -->
@@ -273,24 +293,74 @@
 
 
 
+    height:50vh;
+
 ">
     
     <!-- 主页  -->
     
+        
+    <!-- 404页  -->
+    
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+                热部署
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+                
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+</div>
+
+                
+                <!-- 文章字数统计 -->
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2024/02/05</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -420,234 +490,116 @@
 
             <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
             <div class="container container-unloaded">
-                <main class="main index-page">
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/11/01/%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81/">
-                
-                <span class="abstract-title-text">如何进行短信验证</span>
-            </a>
-            <div class="abstract-content">
-                这个是别人的
-怎样给手机发送短信验证码-CSDN博客  原文链接
-1、首先你得去短信平台申请账户，我之前用的是梦网云短信平台，这里也是讲用梦网云短信平台发送短信。
-2、网址：http://www.monyun.cn/account/new_activity.html#B_vid=14000372792667055753，好处是注册之后会赠送200条免费短信，测试是足够了。
-3、下载JavaSmsSdk.jar，修改SDKDemoUtil中的发送账号和密码，调用工具类SDKDemoUtil的sendMsg（String phone,String code),传入手机号码和生成的随机验证码，...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/11/01">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/11/01</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/10/31/%E4%BD%BF%E7%94%A8es%E5%92%8Cjava%E7%9A%84%E9%83%A8%E5%88%86%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
-                
-                <span class="abstract-title-text">使用es和java的部分注意事项</span>
-            </a>
-            <div class="abstract-content">
-                不同的配置123elasticsearch:  rest:    uris: 192.168.253.132:9200
+                <main class="main post-page">
+    <article class="article-entry">
+        <p>部分来自<a target="_blank" rel="noopener" href="https://blog.csdn.net/chachapaofan/article/details/88697452">springboot实现热部署_springboot热部署-CSDN博客</a></p>
+<p>在传统的Java应用部署中，如果你更改了项目中的一个类，通常需要重新编译整个项目并重启应用才能使更改生效。这是因为大多数Java应用运行在一个Java虚拟机（JVM）实例中，而JVM在运行时不支持动态地替换或更新类定义。因此，为了让修改生效，需要停止应用，替换更改后的类或jar文件，然后重新启动应用。</p>
+<p>然而，有一些技术和工具可以帮助减少这种开发周期中的停机时间，特别是在开发阶段：</p>
+<ol>
+<li><strong>热部署（Hot Deployment）</strong>:<ul>
+<li>在一些应用服务器和开发工具中支持热部署功能，它允许开发者在不重启服务器的情况下更新应用的一部分（如单个类文件）。但是，热部署有其局限性，比如只能在特定的开发环境中使用，且不是所有更改都能热部署（如新增方法可能需要重启）。</li>
+</ul>
+</li>
+<li><strong>Spring Boot的开发者工具（DevTools）</strong>:<ul>
+<li>对于使用Spring Boot开发的项目，Spring Boot提供了一个开发者工具（DevTools），它可以在检测到类路径上的文件变化时自动重启应用。这个过程比完全重启应用要快得多，因为DevTools使用了两个类加载器来隔离应用代码和依赖库，只有应用代码被重启，依赖库保持不变。</li>
+</ul>
+</li>
+<li><strong>JRebel</strong>:<ul>
+<li>JRebel是一个商业产品，它允许开发者在不重启JVM的情况下即时重新加载更改的类和资源。JRebel通过替换类加载器中的类定义来实现，支持广泛的Java应用服务器和框架。使用JRebel可以显著提高开发效率，但它是一个付费工具。</li>
+</ul>
+</li>
+<li><strong>HotSwap</strong>:<ul>
+<li>HotSwap是JVM的一个特性，它允许在调试模式下替换类的方法体。但是，HotSwap的能力相对有限，它不能添加或删除方法和字段。为了扩展HotSwap的能力，JDK 8引入了一个实验性的工具HotSwap Agent，它提供了更多的热替换功能。</li>
+</ul>
+</li>
+</ol>
+<p>在生产环境中，由于稳定性和安全性的考虑，通常推荐完整地重新编译和测试应用，然后进行标准的部署流程，包括应用重启。在开发阶段，可以利用上述工具和技术来减少等待时间，提高开发效率。</p>
+<ol>
+<li>前言</li>
+</ol>
+<p>在实际开发过程中，每次修改代码就得将项目重启，重新部署，对于一些大型应用来说，重启时间需要花费大量的时间成本。对于一个后端开发者来说，重启过程确实很难受啊。在 Java 开发领域，热部署一直是一个难以解决的问题，目前的 Java 虚拟机只能实现方法体的修改热部署，对于整个类的结构修改，仍然需要重启虚拟机，对类重新加载才能完成更新操作。下面我&#x3D;我们就看看对于简单的类修改的热部署怎么实现。</p>
+<ol start="2">
+<li><p>原理<br>深层原理是使用了两个ClassLoader，一个Classloader加载那些不会改变的类（第三方Jar包），另一个ClassLoader加载会更改的类，称为restart ClassLoader,这样在有代码更改的时候，原来的restart ClassLoader 被丢弃，重新创建一个restart ClassLoader，由于需要加载的类相比较少，所以实现了较快的重启时间。<br>若想探究底层实现或者自定义加载类，可以参考大佬博客</p>
+</li>
+<li><p>方式<br>springboot有3中热部署方式：</p>
+</li>
+</ol>
+<p>1.使用springloaded配置pom.xml文件，使用mvn spring-boot:run启动</p>
+<p>2.使用springloaded本地加载启动，配置jvm参数</p>
+<p>-javaagent:&lt;jar包地址&gt; -noverify</p>
+<p>3.使用devtools工具包，操作简单，但是每次需要重新部署<br>这里主要讲解一下第三种热部署方式的使用，因为在网上查找资源时，总会发现很多人就是springloaded和devtools都使用了，其实是多余的操作，而且第三种操作简单快捷。</p>
+<ol start="4">
+<li>开始配置<br>4.1 在pom.xml中添加依赖</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--devtools热部署--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>true<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">fork</span>&gt;</span>true<span class="tag">&lt;/<span class="name">fork</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<p>（1） devtools可以实现页面热部署（即页面修改后会立即生效，这个可以直接在application.properties文件中配置spring.thymeleaf.cache&#x3D;false来实现），<br>实现类文件热部署（类文件修改后不会立即生效），实现对属性文件的热部署。<br>即devtools会监听classpath下的文件变动，并且会立即重启应用（发生在保存时机），注意：因为其采用的虚拟机机制，该项重启是很快的<br>（2）配置了true后在修改java文件后也就支持了热启动，不过这种方式是属于项目重启（速度比较快的项目重启），会清空session中的值，也就是如果有用户登陆的话，项目重启后需要重新登陆。<br>默认情况下，&#x2F;META-INF&#x2F;maven，&#x2F;META-INF&#x2F;resources，&#x2F;resources，&#x2F;static，&#x2F;templates，&#x2F;public这些文件夹下的文件修改不会使应用重启，但是会重新加载（devtools内嵌了一个LiveReload server，当资源发生改变时，浏览器刷新）。</p>
+<p>4.2 devtools的配置<br>在application.yml中配置一下devtools</p>
+<p>spring:<br>  devtools:<br>    restart:<br>      enabled: true  #设置开启热部署<br>      additional-paths: src&#x2F;main&#x2F;java #重启目录<br>      exclude: WEB-INF&#x2F;**<br>  freemarker:<br>    cache: false    #页面不加载缓存，修改即时生效</p>
+<p>4.3 IDEA中配置<br>当我们修改了类文件后，idea不会自动编译，得修改idea设置。</p>
+<p>（1）File-Settings-Compiler-Build Project automatically<br>（2）ctrl + shift + alt + &#x2F; ,选择Registry,勾上 Compiler autoMake allow when app running</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3d4NC5zaW5haW1nLmNuL2xhcmdlLzAwNmVPcVY5bHkxZzE5aDc1OHl1NWozMWhjMHNxd2k1LmpwZw" alt="img"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3d4Mi5zaW5haW1nLmNuL2xhcmdlLzAwNmVPcVY5bHkxZzE5aDc3djkxdmozMG1sMGlwM3pwLmpwZw" alt="img"></p>
+<p>4.4 测试<br>修改类–&gt;保存：应用会重启<br>修改配置文件–&gt;保存：应用会重启<br>修改页面–&gt;保存：应用不会重启，但会重新加载，页面会刷新</p>
+<ol start="5">
+<li>参考资料&amp;小结<br>小结<br>热部署有三种方式，我被网上的各种博客搞得晕头转向的，本来不是个难问题，越看越复杂。最近有点自闭，对于敲代码这件事来说，我不知道我到底喜不喜欢，还是只是单纯为了找工作，我看着别人敲的代码，感觉自己与别人差距还很大，我觉得自己非常菜，我不知道我要是以后固定的工作，固定的敲代码，会不会还有进步。自闭中。。。</li>
+</ol>
 
-12345spring:  data:    elasticsearch:      client:        endpoints: localhost:9200
+    </article>
+    <!-- license -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://yiju-peng.github.io">YiJu-Peng</a>
+            <p>原文链接：<a href="https://yiju-peng.github.io/2024/02/05/%E7%83%AD%E9%83%A8%E7%BD%B2/">https://yiju-peng.github.io/2024/02/05/%E7%83%AD%E9%83%A8%E7%BD%B2/</a>
+            <p>发表日期：<a href="https://yiju-peng.github.io/2024/02/05/%E7%83%AD%E9%83%A8%E7%BD%B2/">February 5th 2024, 9:02:08 pm</a>
+            <p>更新日期：<a href="https://yiju-peng.github.io/2024/02/05/%E7%83%AD%E9%83%A8%E7%BD%B2/">February 5th 2024, 9:10:46 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2024/01/18/%E7%BD%91%E7%AB%99%E6%94%B6%E5%BD%95/" title="网站收录">
+                    <div class="prevTitle">网站收录</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
 
 
-elasticsearch.rest.uris配置项是用于配置通过Elasticsearch REST API连接到Elasticsearch集群的主机和端口号。它指定了Elasticsearch服务器的地址。例如，在你的示例中，192.168.253.132:9200表示Elasticsearch...
-            </div>
-            <!-- read more -->
             
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/11/01">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/10/31</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/10/30/git%E9%83%A8%E5%88%86%E6%93%8D%E4%BD%9C/">
-                
-                <span class="abstract-title-text">git部分操作</span>
-            </a>
-            <div class="abstract-content">
-                合并（merge）、变基（rebase）以及签出（checkout）下面有一个详细的例子来说明合并（merge）、变基（rebase）以及签出（checkout）的概念和操作。
-假设我们有两个分支：master 和 feature。master 分支是主分支，feature 分支是用于开发新功能的分支。
 
-首先，我们从 master 分支创建并切换到 feature 分支：
-1Copy Codegit checkout -b feature master
+            
 
-这个命令将创建 feature 分支，并将当前所在分支切换到 feature 分支。
+            
 
-在 feature 分支上进行一些提交，假设...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/10/30">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/10/30</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/10/27/%E4%B8%BA%E5%95%A5%E9%9C%80%E8%A6%81NIO/">
-                
-                <span class="abstract-title-text">为啥需要selector</span>
-            </a>
-            <div class="abstract-content">
-                ​    
-引言在了解这个之前,我们首先要了解啥是内核态,啥是用户态
-内核态（Kernel Mode）和用户态（User Mode）内核态（Kernel Mode）和用户态（User Mode）是操作系统中的两种不同的运行模式。
-内核态是操作系统的特权模式，也称为特权级别高的模式。在内核态下，操作系统具有对计算机硬件和系统资源的完全控制权，可以执行特权指令，并访问受限的硬件和内存区域。在内核态下运行的代码拥有最高的权限，可以执行关键的系统任务，如管理进程、内存管理、设备驱动程序等。
-用户态是操作系统的非特权模式，也称为特权级别低的模式。在用户态下，应用程序和用户进程运行，它们只能访问受限...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/10/29">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/10/27</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/10/27/Netty%E5%AD%A6%E4%B9%A0%E4%B9%8BNIO%E5%9F%BA%E7%A1%80/">
-                
-                <span class="abstract-title-text">Netty学习之NIO基础</span>
-            </a>
-            <div class="abstract-content">
-                Netty学习之NIO基础本博客是根据黑马程序员Netty实战学习时所做的笔记
-这个是别人写的这个地方做参考,原来的博客地址在这里
-Netty学习之NIO基础 - Nyima’s Blog (gitee.io)
-一、三大组件简介Channel与Buffer
-Java NIO系统的核心在于：通道(Channel)和缓冲区(Buffer)。通道表示打开到 IO 设备(例如：文件、套接字)的连接。若需要使用 NIO 系统，需要获取用于连接 IO 设备的通道以及用于容纳数据的缓冲区。然后操作缓冲区，对数据进行处理
-简而言之，通道负责传输，缓冲区负责存储
-常见的Channel有以下四种，其中Fil...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/10/27">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/10/27</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/10/27/mvc%E5%92%8Cflux/">
-                
-                <span class="abstract-title-text">SpringBoot深入分析webmvc和webflux的区别</span>
-            </a>
-            <div class="abstract-content">
-                SpringBoot深入分析webmvc和webflux的区别webmvc和webflux作为spring framework的两个重要模块，代表了两个IO模型，阻塞式和非阻塞式。
+            <!-- utteranc评论 -->
 
-1、webmvcwebmvc是基于servlet的阻塞式模型，一个请求到达服务器后会单独分配一个线程去处理请求，如果请求包含IO操作，线程在IO操作结束之前一直处于阻塞等待状态，这样线程在等待IO操作结束的时间就浪费了。
-2、webfluxwebflux是一个异步非阻塞式的 Web 框架，它能够充分利用多核 CPU 的硬件资源去处理大量的并发请求。
-webflux内部使用的是响应式编程（Reactive P...
-            </div>
-            <!-- read more -->
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
             
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/10/27">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/10/27</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
             
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/10/27/2023-10-22%20%E6%9C%A8%E6%A1%B6%E7%AE%97%E6%B3%95%E6%8E%A7%E5%88%B6%E6%B5%81%E9%87%8F%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E5%8F%8A%E5%8A%A8%E6%80%81rate%20161447/">
-                
-                <span class="abstract-title-text">木桶算法控制流量注意事项及动态rate</span>
-            </a>
-            <div class="abstract-content">
-                木桶算法控制流量注意事项及动态rate下面是给出的一个例子
-1234567891011public class TokenBucket &#123;    private int capacity=CAPACITY;  // 令牌桶容量    private int rate=RATE;      // 令牌生成速率(计算方法为 每1000/rate ms生成一个)    private final int maxrate=MAX_RATE;  // 最大令牌生成速率(计算方法为 每1000/rate ms生成一个)    private final int minrate=MIN_RA...
-            </div>
-            <!-- read more -->
+
             
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/10/27">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/10/27</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
+
+        </div>
     
-    <!-- paginator  -->
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
     
-        <nav class="page-nav">
-            <a class="extend prev" rel="prev" href="/archives/2023/">&lt; PREV</a><a class="page-number" href="/archives/2023/">1</a><span class="page-number current">2</span>
-        </nav>
+    <!-- Mathjax -->
     
 </main>
 
@@ -745,6 +697,23 @@ webflux内部使用的是响应式编程（Reactive P...
 
         </div>
         <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                
+            </div>
         
         <!-- sidebar -->
         <div class="sidebar sidebar-hide">
@@ -1245,6 +1214,8 @@ webflux内部使用的是响应式编程（Reactive P...
         <!-- CNZZ -->
         
         <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
         
         <!-- mermaid -->
         

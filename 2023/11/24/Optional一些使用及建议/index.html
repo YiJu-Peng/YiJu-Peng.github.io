@@ -515,28 +515,28 @@
 </code></pre>
 <p>}</p>
 <p>不过，你看到了，这个方法会在值为 null 的时候抛出异常。要避免异常，你可以选择首先验证是否有值：</p>
-<p>@Test<br>public void whenCheckIfPresent_thenOk() {<br>    User user &#x3D; new User(“<a href="mailto:&#x6a;&#x6f;&#x68;&#110;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#x6a;&#x6f;&#x68;&#110;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a>“, “1234”);<br>    Optional<User> opt &#x3D; Optional.ofNullable(user);<br>    assertTrue(opt.isPresent());<br>    assertEquals(user.getEmail(), opt.get().getEmail());<br>}</p>
+<p>@Test<br>public void whenCheckIfPresent_thenOk() {<br>    User user &#x3D; new User(“<a href="mailto:&#106;&#111;&#104;&#x6e;&#x40;&#103;&#109;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#109;">&#106;&#111;&#104;&#x6e;&#x40;&#103;&#109;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#109;</a>“, “1234”);<br>    Optional<User> opt &#x3D; Optional.ofNullable(user);<br>    assertTrue(opt.isPresent());<br>    assertEquals(user.getEmail(), opt.get().getEmail());<br>}</p>
 <p>检查是否有值的另一个选择是 ifPresent() 方法。该方法除了执行检查，还接受一个Consumer(消费者) 参数，如果对象不是空的，就对执行传入的 Lambda 表达式：</p>
 <p>opt.ifPresent( u -&gt; assertEquals(user.getEmail(), u.getEmail()));</p>
 <p>这个例子中，只有 user 用户不为 null 的时候才会执行断言。<br>接下来，我们来看看提供空值的方法。<br>返回默认值<br>Optional 类提供了 API 用以返回对象值，或者在对象为空的时候返回默认值。</p>
 <p>这里你可以使用的第一个方法是 orElse()，它的工作方式非常直接，如果有值则返回该值，否则返回传递给它的参数值：</p>
-<p>@Test<br>public void whenEmptyValue_thenReturnDefault() {<br>    User user &#x3D; null;<br>    User user2 &#x3D; new User(“<a href="mailto:&#x61;&#x6e;&#110;&#97;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;">&#x61;&#x6e;&#110;&#97;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;</a>“, “1234”);<br>    User result &#x3D; Optional.ofNullable(user).orElse(user2);</p>
+<p>@Test<br>public void whenEmptyValue_thenReturnDefault() {<br>    User user &#x3D; null;<br>    User user2 &#x3D; new User(“<a href="mailto:&#97;&#x6e;&#x6e;&#x61;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;">&#97;&#x6e;&#x6e;&#x61;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;</a>“, “1234”);<br>    User result &#x3D; Optional.ofNullable(user).orElse(user2);</p>
 <pre><code>assertEquals(user2.getEmail(), result.getEmail());
 </code></pre>
 <p>}</p>
 <p>这里 user 对象是空的，所以返回了作为默认值的 user2。<br>如果对象的初始值不是 null，那么默认值会被忽略：</p>
-<p>@Test<br>public void whenValueNotNull_thenIgnoreDefault() {<br>    User user &#x3D; new User(“<a href="mailto:&#x6a;&#x6f;&#x68;&#110;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;">&#x6a;&#x6f;&#x68;&#110;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;</a>“,”1234”);<br>    User user2 &#x3D; new User(“<a href="mailto:&#x61;&#x6e;&#x6e;&#97;&#64;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#x61;&#x6e;&#x6e;&#97;&#64;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;</a>“, “1234”);<br>    User result &#x3D; Optional.ofNullable(user).orElse(user2);<br>    assertEquals(“<a href="mailto:&#106;&#x6f;&#x68;&#x6e;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;">&#106;&#x6f;&#x68;&#x6e;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;</a>“, result.getEmail());<br>}</p>
+<p>@Test<br>public void whenValueNotNull_thenIgnoreDefault() {<br>    User user &#x3D; new User(“<a href="mailto:&#106;&#x6f;&#104;&#110;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#106;&#x6f;&#104;&#110;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a>“,”1234”);<br>    User user2 &#x3D; new User(“<a href="mailto:&#97;&#110;&#110;&#97;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;">&#97;&#110;&#110;&#97;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;</a>“, “1234”);<br>    User result &#x3D; Optional.ofNullable(user).orElse(user2);<br>    assertEquals(“<a href="mailto:&#106;&#111;&#104;&#110;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;">&#106;&#111;&#104;&#110;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;</a>“, result.getEmail());<br>}</p>
 <p>第二个同类型的 API 是 orElseGet() —— 其行为略有不同。这个方法会在有值的时候返回值，如果没有值，它会执行作为参数传入的 Supplier(供应者) 函数式接口，并将返回其执行结果：</p>
 <p>User result &#x3D; Optional.ofNullable(user).orElseGet( () -&gt; user2);</p>
 <p>orElse() 和 orElseGet() 的不同之处</p>
 <p>乍一看，这两种方法似乎起着同样的作用。然而事实并非如此。我们创建一些示例来突出二者行为上的异同。</p>
 <p>我们先来看看对象为空时他们的行为：</p>
 <p>@Test<br>public void givenEmptyValue_whenCompare_thenOk() {<br>    User user &#x3D; null<br>    logger.debug(“Using orElse”);<br>    User result &#x3D; Optional.ofNullable(user).orElse(createNewUser());<br>    logger.debug(“Using orElseGet”);<br>    User result2 &#x3D; Optional.ofNullable(user).orElseGet(() -&gt; createNewUser());<br>}</p>
-<p>private User createNewUser() {<br>    logger.debug(“Creating New User”);<br>    return new User(“<a href="mailto:&#x65;&#x78;&#116;&#x72;&#97;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#x65;&#x78;&#116;&#x72;&#97;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a>“, “1234”);<br>}</p>
+<p>private User createNewUser() {<br>    logger.debug(“Creating New User”);<br>    return new User(“<a href="mailto:&#101;&#x78;&#x74;&#114;&#97;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#101;&#x78;&#x74;&#114;&#97;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;</a>“, “1234”);<br>}</p>
 <p>上面的代码中，两种方法都调用了 createNewUser() 方法，这个方法会记录一个消息并返回 User 对象。<br>代码输出如下：</p>
 <p>Using orElse<br>Creating New User<br>Using orElseGet<br>Creating New User</p>
 <p>由此可见，当对象为空而返回默认对象时，行为并无差异。<br>我们接下来看一个类似的示例，但这里 Optional 不为空：</p>
-<p>@Test<br>public void givenPresentValue_whenCompare_thenOk() {<br>    User user &#x3D; new User(“<a href="mailto:&#106;&#x6f;&#104;&#x6e;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;">&#106;&#x6f;&#104;&#x6e;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;</a>“, “1234”);<br>    logger.info(“Using orElse”);<br>    User result &#x3D; Optional.ofNullable(user).orElse(createNewUser());<br>    logger.info(“Using orElseGet”);<br>    User result2 &#x3D; Optional.ofNullable(user).orElseGet(() -&gt; createNewUser());<br>}</p>
+<p>@Test<br>public void givenPresentValue_whenCompare_thenOk() {<br>    User user &#x3D; new User(“<a href="mailto:&#106;&#111;&#104;&#110;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;">&#106;&#111;&#104;&#110;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;</a>“, “1234”);<br>    logger.info(“Using orElse”);<br>    User result &#x3D; Optional.ofNullable(user).orElse(createNewUser());<br>    logger.info(“Using orElseGet”);<br>    User result2 &#x3D; Optional.ofNullable(user).orElseGet(() -&gt; createNewUser());<br>}</p>
 <p>这个示例中，两个 Optional 对象都包含非空值，两个方法都会返回对应的非空值。不过，orElse() 方法仍然创建了 User 对象。与之相反，orElseGet() 方法不创建 User 对象。<br>在执行较密集的调用时，比如调用 Web 服务或数据查询，这个差异会对性能产生重大影响。</p>
 
     </article>
@@ -825,7 +825,28 @@
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -954,7 +975,7 @@
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 20
+        Total : 21
         </div>
         <!-- search  -->
         
@@ -983,6 +1004,12 @@
             <div class="archive-year"> 2024 </div>
             <ul class="year-list">
             
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/05</span>
+            <a class="archive-post-title" href="/2024/02/05/%E7%83%AD%E9%83%A8%E7%BD%B2/">热部署</a>
+        </li>
+    
         
         <li class="archive-post-item">
             <span class="archive-post-date">01/18</span>
@@ -1060,12 +1087,6 @@
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">11/08</span>
-            <a class="archive-post-title" href="/2023/11/08/%E8%BF%94%E5%9B%9E%E9%9C%80%E8%A6%81%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6/">接口文件件细节(下载)</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
             <span class="archive-post-date">11/03</span>
             <a class="archive-post-title" href="/2023/11/03/mybatisplus/">mybatisplus</a>
         </li>
@@ -1078,20 +1099,8 @@
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">10/31</span>
-            <a class="archive-post-title" href="/2023/10/31/%E4%BD%BF%E7%94%A8es%E5%92%8Cjava%E7%9A%84%E9%83%A8%E5%88%86%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">使用es和java的部分注意事项</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
             <span class="archive-post-date">10/30</span>
             <a class="archive-post-title" href="/2023/10/30/git%E9%83%A8%E5%88%86%E6%93%8D%E4%BD%9C/">git部分操作</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/27</span>
-            <a class="archive-post-title" href="/2023/10/27/Netty%E5%AD%A6%E4%B9%A0%E4%B9%8BNIO%E5%9F%BA%E7%A1%80/">Netty学习之NIO基础</a>
         </li>
     
         
@@ -1118,6 +1127,24 @@
             <div class="archive-year"> 2023 </div>
             <ul class="year-list">
             
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/08</span>
+            <a class="archive-post-title" href="/2023/11/08/%E8%BF%94%E5%9B%9E%E9%9C%80%E8%A6%81%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6/">接口文件件细节(下载)</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/31</span>
+            <a class="archive-post-title" href="/2023/10/31/%E4%BD%BF%E7%94%A8es%E5%92%8Cjava%E7%9A%84%E9%83%A8%E5%88%86%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">使用es和java的部分注意事项</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/27</span>
+            <a class="archive-post-title" href="/2023/10/27/Netty%E5%AD%A6%E4%B9%A0%E4%B9%8BNIO%E5%9F%BA%E7%A1%80/">Netty学习之NIO基础</a>
+        </li>
+    
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/27</span>
