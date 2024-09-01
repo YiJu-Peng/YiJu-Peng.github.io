@@ -429,6 +429,72 @@
             
         
         <article class="index-post">
+            <a class="abstract-title" href="/2023/11/17/es%E7%BA%A2%E8%89%B2%E5%88%86%E7%89%87%E5%AF%BC%E8%87%B4kibana%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+                
+                <span class="abstract-title-text">es红色分片导致kibana无法启动解决方法</span>
+            </a>
+            <div class="abstract-content">
+                一、问题kibana无法启动,显示报错.kibana_task_manager_1有问题,然后es也随之无法进行读写操作
+二、问题原因有一些索引的数据损坏了
+部分或者是全部的分片出现了问题
+三、解决
+思路,删除出错的索引,保证其他的正常的运行 
+官网文档：https://www.elastic.co/guide/cn/elasticsearch/guide/cn/_cluster_health.html
+1、查看索引信息
+curl -XGET ‘http://localhost:9200/_cluster/health?pretty=true‘
+{  “cluster_name” : “...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/11/17">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/11/17</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/11/16/boot%E6%95%B4%E5%90%88%E9%82%AE%E4%BB%B6/">
+                
+                <span class="abstract-title-text">boot整合邮件</span>
+            </a>
+            <div class="abstract-content">
+                【精选】手把手教你通过SpringBoot实现邮箱注册码验证_springboot邮箱验证码注册_智慧zhuhuix的博客-CSDN博客
+Spring Boot项目邮箱验证码功能的实现（以QQ邮箱为例）_邮箱验证功能实现-CSDN博客
+123456spring:  mail:    default-encoding: UTF-8    username: &quot;2211087760@qq.com&quot;    password: &quot;clirqbxdturqdidg&quot;    host: &quot;smtp.qq.com&quot;
+
+
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/11/16">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/11/16</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
             <a class="abstract-title" href="/2023/11/14/JAVA%E8%B0%83%E7%94%A8%E6%A2%A6%E7%BD%91%E4%BA%91%E9%80%9A%E8%AE%AF%E5%B9%B3%E5%8F%B0API%E5%AE%9E%E7%8E%B0%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81/">
                 
                 <span class="abstract-title-text">JAVA调用梦网云通讯平台API实现短信发送</span>
@@ -665,70 +731,6 @@ elasticsearch.rest.uris配置项是用于配置通过Elasticsearch REST API连�
         </article>
         <div class="index-post-divider"></div>
     
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/10/27/Netty%E5%AD%A6%E4%B9%A0%E4%B9%8BNIO%E5%9F%BA%E7%A1%80/">
-                
-                <span class="abstract-title-text">Netty学习之NIO基础</span>
-            </a>
-            <div class="abstract-content">
-                Netty学习之NIO基础本博客是根据黑马程序员Netty实战学习时所做的笔记
-这个是别人写的这个地方做参考,原来的博客地址在这里
-Netty学习之NIO基础 - Nyima’s Blog (gitee.io)
-一、三大组件简介Channel与Buffer
-Java NIO系统的核心在于：通道(Channel)和缓冲区(Buffer)。通道表示打开到 IO 设备(例如：文件、套接字)的连接。若需要使用 NIO 系统，需要获取用于连接 IO 设备的通道以及用于容纳数据的缓冲区。然后操作缓冲区，对数据进行处理
-简而言之，通道负责传输，缓冲区负责存储
-常见的Channel有以下四种，其中Fil...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/10/27">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/10/27</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/10/27/mvc%E5%92%8Cflux/">
-                
-                <span class="abstract-title-text">SpringBoot深入分析webmvc和webflux的区别</span>
-            </a>
-            <div class="abstract-content">
-                SpringBoot深入分析webmvc和webflux的区别webmvc和webflux作为spring framework的两个重要模块，代表了两个IO模型，阻塞式和非阻塞式。
-
-1、webmvcwebmvc是基于servlet的阻塞式模型，一个请求到达服务器后会单独分配一个线程去处理请求，如果请求包含IO操作，线程在IO操作结束之前一直处于阻塞等待状态，这样线程在等待IO操作结束的时间就浪费了。
-2、webfluxwebflux是一个异步非阻塞式的 Web 框架，它能够充分利用多核 CPU 的硬件资源去处理大量的并发请求。
-webflux内部使用的是响应式编程（Reactive P...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/10/27">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/10/27</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
     <!-- paginator  -->
     
         <nav class="page-nav">
@@ -948,7 +950,33 @@ webflux内部使用的是响应式编程（Reactive P...
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1093,7 +1121,7 @@ webflux内部使用的是响应式编程（Reactive P...
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 21
+        Total : 23
         </div>
         <!-- search  -->
         
@@ -1103,6 +1131,54 @@ webflux内部使用的是响应式编程（Reactive P...
     
         
             
+            
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span>
+            <a class="archive-post-title" href="/2024/09/01/%E5%BA%8F%E5%88%97%E5%8C%96%E7%9B%B8%E5%85%B3/">[Untitled Post]</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span>
+            <a class="archive-post-title" href="/2024/02/16/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E6%B5%8B%E8%AF%95/">分布式服务测试</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span>
+            <a class="archive-post-title" href="/2024/01/16/mysql%E4%BA%8B%E5%8A%A1%E7%BB%86%E8%AF%BB/">mysql事务细读</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/24</span>
+            <a class="archive-post-title" href="/2023/11/24/Optional%E4%B8%80%E4%BA%9B%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%BB%BA%E8%AE%AE/">Optional一些使用及建议</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/14</span>
+            <a class="archive-post-title" href="/2023/11/14/JAVA%E8%B0%83%E7%94%A8%E6%A2%A6%E7%BD%91%E4%BA%91%E9%80%9A%E8%AE%AF%E5%B9%B3%E5%8F%B0API%E5%AE%9E%E7%8E%B0%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81/">JAVA调用梦网云通讯平台API实现短信发送</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
             
             <div class="archive-year"> Invalid date </div>
             <ul class="year-list">
@@ -1136,12 +1212,6 @@ webflux内部使用的是响应式编程（Reactive P...
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">01/16</span>
-            <a class="archive-post-title" href="/2024/01/16/mysql%E4%BA%8B%E5%8A%A1%E7%BB%86%E8%AF%BB/">mysql事务细读</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
             <span class="archive-post-date">01/14</span>
             <a class="archive-post-title" href="/2024/01/14/SpringSecurity/">SpringSecurity</a>
         </li>
@@ -1159,12 +1229,6 @@ webflux内部使用的是响应式编程（Reactive P...
         <li class="archive-post-item">
             <span class="archive-post-date">12/24</span>
             <a class="archive-post-title" href="/2023/12/24/generator%E4%BD%BF%E7%94%A8/">generator使用</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/24</span>
-            <a class="archive-post-title" href="/2023/11/24/Optional%E4%B8%80%E4%BA%9B%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%BB%BA%E8%AE%AE/">Optional一些使用及建议</a>
         </li>
     
         
@@ -1193,14 +1257,14 @@ webflux内部使用的是响应式编程（Reactive P...
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">11/14</span>
-            <a class="archive-post-title" href="/2023/11/14/JAVA%E8%B0%83%E7%94%A8%E6%A2%A6%E7%BD%91%E4%BA%91%E9%80%9A%E8%AE%AF%E5%B9%B3%E5%8F%B0API%E5%AE%9E%E7%8E%B0%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81/">JAVA调用梦网云通讯平台API实现短信发送</a>
+            <span class="archive-post-date">11/12</span>
+            <a class="archive-post-title" href="/2023/11/12/RabbitMq%E8%87%AA%E5%8A%A8%E5%A3%B0%E6%98%8E%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E9%98%9F%E5%88%97%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AD%89/">RabbitMq自动声明不存在的队列交换机等</a>
         </li>
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">11/12</span>
-            <a class="archive-post-title" href="/2023/11/12/RabbitMq%E8%87%AA%E5%8A%A8%E5%A3%B0%E6%98%8E%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E9%98%9F%E5%88%97%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AD%89/">RabbitMq自动声明不存在的队列交换机等</a>
+            <span class="archive-post-date">11/08</span>
+            <a class="archive-post-title" href="/2023/11/08/%E8%BF%94%E5%9B%9E%E9%9C%80%E8%A6%81%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6/">接口文件件细节(下载)</a>
         </li>
     
         
@@ -1217,8 +1281,20 @@ webflux内部使用的是响应式编程（Reactive P...
     
         
         <li class="archive-post-item">
+            <span class="archive-post-date">10/31</span>
+            <a class="archive-post-title" href="/2023/10/31/%E4%BD%BF%E7%94%A8es%E5%92%8Cjava%E7%9A%84%E9%83%A8%E5%88%86%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">使用es和java的部分注意事项</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">10/30</span>
             <a class="archive-post-title" href="/2023/10/30/git%E9%83%A8%E5%88%86%E6%93%8D%E4%BD%9C/">git部分操作</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/27</span>
+            <a class="archive-post-title" href="/2023/10/27/Netty%E5%AD%A6%E4%B9%A0%E4%B9%8BNIO%E5%9F%BA%E7%A1%80/">Netty学习之NIO基础</a>
         </li>
     
         
@@ -1245,24 +1321,6 @@ webflux内部使用的是响应式编程（Reactive P...
             <div class="archive-year"> 2023 </div>
             <ul class="year-list">
             
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/08</span>
-            <a class="archive-post-title" href="/2023/11/08/%E8%BF%94%E5%9B%9E%E9%9C%80%E8%A6%81%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6/">接口文件件细节(下载)</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/31</span>
-            <a class="archive-post-title" href="/2023/10/31/%E4%BD%BF%E7%94%A8es%E5%92%8Cjava%E7%9A%84%E9%83%A8%E5%88%86%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">使用es和java的部分注意事项</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/27</span>
-            <a class="archive-post-title" href="/2023/10/27/Netty%E5%AD%A6%E4%B9%A0%E4%B9%8BNIO%E5%9F%BA%E7%A1%80/">Netty学习之NIO基础</a>
-        </li>
-    
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/27</span>

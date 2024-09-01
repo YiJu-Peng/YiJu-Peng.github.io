@@ -429,6 +429,64 @@
             
         
         <article class="index-post">
+            <a class="abstract-title" href="/2024/09/01/%E5%BA%8F%E5%88%97%E5%8C%96%E7%9B%B8%E5%85%B3/">
+                
+                <span class="abstract-title-text">[Untitled Post]</span>
+            </a>
+            <div class="abstract-content">
+                在 Java 中，要使对象能够被序列化，通常需要实现 java.io.Serializable 接口。这个接口是一个标记性接口，它不包含方法，仅仅通过实现这个接口来告诉 Java 虚拟机这个类的对象可以被序列化。
+然而，对于使用 JSON 库（如 Jackson）进行序列化的情况，通常不需要显式实现 Serializable 接口。JSON 库通常有自己的机制来处理对象的序列化和反序列化。对于 Jackson 来说，只要你的对象中的所有属性都是可序列化的，或者有相应的 getter 方法（并且这些属性的类型也是可序列化的），Jackson 就能够序列化这个对象。
+serializable...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2024/09/01">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/09/01</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2024/02/16/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E6%B5%8B%E8%AF%95/">
+                
+                <span class="abstract-title-text">分布式服务测试</span>
+            </a>
+            <div class="abstract-content">
+                分布式服务存在一定的版本问题,如果只是修改了一个服务上面的某个方法的实现但是不修改他的函数签名的时候,当请求打来的时候可能就会到旧的服务上去,从而导致返回的数据有问题(当然,这样同时也使用于灰度发布,就是一般是旧的服务,一半是新的服务),如果我们就是指定要测试新的服务的话,最好是启用别的函数签名(就是另外起一个函数名,或者是将其他的服务器上面的程序挂起)
+临时挂起服务而不是停止服务，那么可以通过防火墙规则来实现。你可以使用以下命令来暂时禁止特定端口的网络流量访问，而不影响服务本身的运行：
+12sudo iptables -A INPUT -p tcp --dport 3020 -j DR...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2024/02/16">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/02/16</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
             <a class="abstract-title" href="/2024/02/05/%E7%83%AD%E9%83%A8%E7%BD%B2/">
                 
                 <span class="abstract-title-text">热部署</span>
@@ -772,7 +830,33 @@ Spring Security 是一个功能强大且灵活的身份验证和授权框架，�
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -917,7 +1001,7 @@ Spring Security 是一个功能强大且灵活的身份验证和授权框架，�
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 21
+        Total : 23
         </div>
         <!-- search  -->
         
@@ -927,6 +1011,54 @@ Spring Security 是一个功能强大且灵活的身份验证和授权框架，�
     
         
             
+            
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/01</span>
+            <a class="archive-post-title" href="/2024/09/01/%E5%BA%8F%E5%88%97%E5%8C%96%E7%9B%B8%E5%85%B3/">[Untitled Post]</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span>
+            <a class="archive-post-title" href="/2024/02/16/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E6%B5%8B%E8%AF%95/">分布式服务测试</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span>
+            <a class="archive-post-title" href="/2024/01/16/mysql%E4%BA%8B%E5%8A%A1%E7%BB%86%E8%AF%BB/">mysql事务细读</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/24</span>
+            <a class="archive-post-title" href="/2023/11/24/Optional%E4%B8%80%E4%BA%9B%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%BB%BA%E8%AE%AE/">Optional一些使用及建议</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/14</span>
+            <a class="archive-post-title" href="/2023/11/14/JAVA%E8%B0%83%E7%94%A8%E6%A2%A6%E7%BD%91%E4%BA%91%E9%80%9A%E8%AE%AF%E5%B9%B3%E5%8F%B0API%E5%AE%9E%E7%8E%B0%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81/">JAVA调用梦网云通讯平台API实现短信发送</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
             
             <div class="archive-year"> Invalid date </div>
             <ul class="year-list">
@@ -960,12 +1092,6 @@ Spring Security 是一个功能强大且灵活的身份验证和授权框架，�
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">01/16</span>
-            <a class="archive-post-title" href="/2024/01/16/mysql%E4%BA%8B%E5%8A%A1%E7%BB%86%E8%AF%BB/">mysql事务细读</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
             <span class="archive-post-date">01/14</span>
             <a class="archive-post-title" href="/2024/01/14/SpringSecurity/">SpringSecurity</a>
         </li>
@@ -983,12 +1109,6 @@ Spring Security 是一个功能强大且灵活的身份验证和授权框架，�
         <li class="archive-post-item">
             <span class="archive-post-date">12/24</span>
             <a class="archive-post-title" href="/2023/12/24/generator%E4%BD%BF%E7%94%A8/">generator使用</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/24</span>
-            <a class="archive-post-title" href="/2023/11/24/Optional%E4%B8%80%E4%BA%9B%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%BB%BA%E8%AE%AE/">Optional一些使用及建议</a>
         </li>
     
         
@@ -1017,14 +1137,14 @@ Spring Security 是一个功能强大且灵活的身份验证和授权框架，�
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">11/14</span>
-            <a class="archive-post-title" href="/2023/11/14/JAVA%E8%B0%83%E7%94%A8%E6%A2%A6%E7%BD%91%E4%BA%91%E9%80%9A%E8%AE%AF%E5%B9%B3%E5%8F%B0API%E5%AE%9E%E7%8E%B0%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81/">JAVA调用梦网云通讯平台API实现短信发送</a>
+            <span class="archive-post-date">11/12</span>
+            <a class="archive-post-title" href="/2023/11/12/RabbitMq%E8%87%AA%E5%8A%A8%E5%A3%B0%E6%98%8E%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E9%98%9F%E5%88%97%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AD%89/">RabbitMq自动声明不存在的队列交换机等</a>
         </li>
     
         
         <li class="archive-post-item">
-            <span class="archive-post-date">11/12</span>
-            <a class="archive-post-title" href="/2023/11/12/RabbitMq%E8%87%AA%E5%8A%A8%E5%A3%B0%E6%98%8E%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E9%98%9F%E5%88%97%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AD%89/">RabbitMq自动声明不存在的队列交换机等</a>
+            <span class="archive-post-date">11/08</span>
+            <a class="archive-post-title" href="/2023/11/08/%E8%BF%94%E5%9B%9E%E9%9C%80%E8%A6%81%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6/">接口文件件细节(下载)</a>
         </li>
     
         
@@ -1041,8 +1161,20 @@ Spring Security 是一个功能强大且灵活的身份验证和授权框架，�
     
         
         <li class="archive-post-item">
+            <span class="archive-post-date">10/31</span>
+            <a class="archive-post-title" href="/2023/10/31/%E4%BD%BF%E7%94%A8es%E5%92%8Cjava%E7%9A%84%E9%83%A8%E5%88%86%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">使用es和java的部分注意事项</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">10/30</span>
             <a class="archive-post-title" href="/2023/10/30/git%E9%83%A8%E5%88%86%E6%93%8D%E4%BD%9C/">git部分操作</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/27</span>
+            <a class="archive-post-title" href="/2023/10/27/Netty%E5%AD%A6%E4%B9%A0%E4%B9%8BNIO%E5%9F%BA%E7%A1%80/">Netty学习之NIO基础</a>
         </li>
     
         
@@ -1069,24 +1201,6 @@ Spring Security 是一个功能强大且灵活的身份验证和授权框架，�
             <div class="archive-year"> 2023 </div>
             <ul class="year-list">
             
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/08</span>
-            <a class="archive-post-title" href="/2023/11/08/%E8%BF%94%E5%9B%9E%E9%9C%80%E8%A6%81%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6/">接口文件件细节(下载)</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/31</span>
-            <a class="archive-post-title" href="/2023/10/31/%E4%BD%BF%E7%94%A8es%E5%92%8Cjava%E7%9A%84%E9%83%A8%E5%88%86%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">使用es和java的部分注意事项</a>
-        </li>
-    
-        
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/27</span>
-            <a class="archive-post-title" href="/2023/10/27/Netty%E5%AD%A6%E4%B9%A0%E4%B9%8BNIO%E5%9F%BA%E7%A1%80/">Netty学习之NIO基础</a>
-        </li>
-    
         
         <li class="archive-post-item">
             <span class="archive-post-date">10/27</span>
